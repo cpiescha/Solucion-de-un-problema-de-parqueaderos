@@ -4,7 +4,6 @@ El estudio evalúa si los **3 cajeros por punto de salida** del centro comercial
 
 ## Documentos
 
-- [Informe de resultados](Informe_Supercentro_parqueaderos.docx): metodología, tablas estadísticas y recomendación.
 - [Cuaderno de simulación](Parqueaderos_modulo_4.ipynb): explicación del experimento y celdas para ejecutar y visualizar resultados. No contiene salidas de ejecución guardadas. Depende de `simulacion_supercentro.py` (no incluido).
 - [Cuaderno del transitorio](transitorio.ipynb): análisis autocontenido de la eliminación del estado transitorio mediante la técnica de Welch. Incluye todo el código inline, gráficas generadas y resultados con outputs. Se puede ejecutar sin dependencias externas más allá de NumPy, Matplotlib y SciPy.
 
