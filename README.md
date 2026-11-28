@@ -5,7 +5,8 @@ El estudio evalúa si los **3 cajeros por punto de salida** del centro comercial
 ## Documentos
 
 - [Informe de resultados](Informe_Supercentro_parqueaderos.docx): metodología, tablas estadísticas y recomendación.
-- [Cuaderno de simulación](Parqueaderos_modulo_4.ipynb): explicación del experimento y celdas para ejecutar y visualizar resultados. No contiene salidas de ejecución guardadas.
+- [Cuaderno de simulación](Parqueaderos_modulo_4.ipynb): explicación del experimento y celdas para ejecutar y visualizar resultados. No contiene salidas de ejecución guardadas. Depende de `simulacion_supercentro.py` (no incluido).
+- [Cuaderno del transitorio](transitorio.ipynb): análisis autocontenido de la eliminación del estado transitorio mediante la técnica de Welch. Incluye todo el código inline, gráficas generadas y resultados con outputs. Se puede ejecutar sin dependencias externas más allá de NumPy, Matplotlib y SciPy.
 
 ## Modelo e inputs
 
@@ -45,16 +46,16 @@ En la configuración base, la utilización reportada ronda el 77%. El cajero 1 r
 
 ## Ejecución y estado de reproducibilidad
 
-**La ejecución completa está bloqueada en la versión actual.** El cuaderno importa `run` desde `simulacion_supercentro`, pero no se incluye `simulacion_supercentro.py`. Tampoco se incluyen la carpeta `figuras/`, los resultados JSON anunciados ni un archivo `requirements.txt`.
+**La ejecución del cuaderno principal está bloqueada en la versión actual.** `Parqueaderos_modulo_4.ipynb` importa `run` desde `simulacion_supercentro`, pero no se incluye `simulacion_supercentro.py`. Tampoco se incluyen la carpeta `figuras/`, los resultados JSON anunciados ni un archivo `requirements.txt`. Para consultar las conclusiones no es necesario ejecutar el cuaderno.
 
-Para reproducir el estudio cuando se recupere el módulo original:
+**El cuaderno del transitorio sí es ejecutable.** `transitorio.ipynb` contiene todo el código inline y se puede ejecutar directamente con:
 
-1. Disponer de Python 3 y un entorno Jupyter con kernel de Python e IPython. Los metadatos del cuaderno indican Python 3.11.0; las dependencias del módulo ausente no pueden determinarse con estos archivos.
-2. Colocar `simulacion_supercentro.py` junto al cuaderno y consultar sus requisitos antes de ejecutarlo.
-3. Abrir `Parqueaderos_modulo_4.ipynb` con el directorio del repositorio como directorio de trabajo y ejecutar las celdas en orden. La primera celda llama a `run()` y las siguientes consultan el diccionario `resultados`.
-4. Comprobar que se generen las imágenes esperadas: `figuras/cajeros.png`, `tipos_usuarios.png`, `escenarios.png`, `proceso_validacion.png`, `welch.png`, `antes_despues.png` y `convergencia.png` (todas dentro de `figuras/`). El cuaderno anuncia un JSON de estadísticas, pero no especifica su nombre.
+```
+pip install numpy matplotlib scipy
+jupyter notebook transitorio.ipynb
+```
 
-Sin el módulo, la importación falla; sin las imágenes, también fallan las celdas de visualización. Para consultar las conclusiones no es necesario ejecutar el cuaderno.
+Este cuaderno reproduce de forma independiente el análisis de Welch (120 réplicas), la comparación antes/después de eliminar el transitorio, el análisis de sensibilidad al periodo de calentamiento y la convergencia con 40 réplicas.
 
 ## Limitaciones y discrepancias por resolver
 
